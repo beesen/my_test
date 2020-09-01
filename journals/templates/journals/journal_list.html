@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>Journals ({{ journals.count }}) on {{ vendor }}</div>
+    <div>
+    <table>
+        <tr><th>Name</th></tr>
+        {% for journal in object_list %}
+            <tr><td>{{ journal.name }}</td></tr>
+        {% endfor %}
+    </table>
+    </div>
+{% endblock %}
