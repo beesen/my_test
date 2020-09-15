@@ -30,8 +30,15 @@ INSTALLED_APPS = [
     # third party apps
     'cx_Oracle',
     # my apps
-    'journals',
     'pages',
+    'regions',
+    'ranking',
+    'sandbox',
+    'journals',
+    'webpages',
+    'indicators',
+    'organizations',
+    'universities',
 ]
 
 MIDDLEWARE = [
@@ -106,7 +113,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# -------------------------------------------------------------------------------------------
+# Needed for CAS implementation
+# -------------------------------------------------------------------------------------------
+INSTALLED_APPS += ["cas"]
+MIDDLEWARE += ["cas.middleware.CASMiddleware"]
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "cas.backends.CASBackend",
+]
+CAS_RESPONSE_CALLBACKS = [
+    "custom_auth.cas.callback"
+]  # => cas.py in custom_auth directory!
+CAS_SERVER_URL = "https://sso.uvt.nl/"
+CAS_LOGOUT_COMPLETELY: True
+CAS_PROVIDE_URL_TO_LOGOUT = True
+CAS_AUTO_CREATE_USER = False
+CAS_CUSTOM_FORBIDDEN = "forbidden"  # custom forbidden page, created in templates
 
 try:
     from my_test.local_settings import *

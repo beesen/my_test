@@ -1,17 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>EconTOP - Tilburg University</title>
+    <meta name="description" content="Library and IT Services">
+    <meta name="keywords"
+          content=""/>
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="shortcut icon" href="{% static 'pages/img/favicon.ico' %}"
+          type="image/vnd.microsoft.icon"/>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    {% comment %}
+    <link rel="stylesheet"
+          href="https://libsearch.uvt.nl/assets/datatables/dist/Responsive-2.2.3/css/responsive.bootstrap4.min.css">
+{% endcomment %}
+    <link rel="stylesheet" href="{% static 'pages/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'pages/css/econtop.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 </head>
 <body>
-<a href='{% url 'home' %}'>Home</a>
-<a href='{% url 'admin:index' %}'>Admin</a>
-<a href='{% url 'journals:list' %}'>Journals</a>
-<div>
-    {% block content %}
-        vervang dit
-    {% endblock %}
+<!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
+        href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+<div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div class="page-layout">
+        <section class="page-layout__navigation" role="banner">
+            <header class="main-navigation">
+                <div class="main-navigation__base-nav">
+                    <div id="block-sitebranding" class="main-navigation__logo">
+                        <a href="https://www.tilburguniversity.edu" title="Home"
+                           rel="home" class="tiu-logo" target="_blank">
+                            <span class="sr-only">Go to the homepage of</span>
+                            <svg width="173" height="44" class="tiu-logo__mark">
+                                <title>Tilburg University</title>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     xlink:href="{% static 'pages/img/dist.svg' %}#tiu-logo"></use>
+                            </svg>
+                            <svg width="140" height="17" style="left:-10px"
+                                 class="tiu-logo__payoff">
+                                <title>Understanding Society</title>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     xlink:href="{% static 'pages/img/dist.svg' %}#tiu-logo-payoff"></use>
+                            </svg>
+                        </a>
+                    </div>
+                    <label class="main-navigation__btn main-navigation__btn-menu js-toggle-menu"
+                           for="toggle-menu"
+                           aria-haspopup="true" aria-owns="main-nav" tabindex="0">
+                <span class="main-navigation__btn-text">
+                  <span class="sr-only">Open</span>
+                  Menu
+                </span>
+                    </label>
+                </div>
+                <input type="checkbox" id="toggle-menu"
+                       class="main-navigation__toggle-checkbox">
+                <nav class="main-navigation__toggle-container" role="navigation"
+                     id="main-nav">
+                    {% include 'navigation.html' %}
+                </nav>
+            </header>
+        </section>
+        <main class="page-layout__content" role="main" id="main">
+            <div class="page-layout__content-inner">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </main>
+    </div>
 </div>
+<script src="{% static 'pages/js/econtop.js' %}"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% comment %}
+<script src="https://libsearch.uvt.nl/assets/js/vendor/modernizr-3.8.0.min.js"></script>
+<script src="https://libsearch.uvt.nl/assets/js/vendor/drupal.min.js"></script>
+<script src="https://libsearch.uvt.nl/assets/popper.js/dist/umd/popper.min.js"></script>
+<script src="https://libsearch.uvt.nl/assets/js/main.min.js"></script>
+{% endcomment %}
 </body>
 </html>

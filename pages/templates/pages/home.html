@@ -1,4 +1,66 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <div>Home</div>
+                <div id="block-epic" class="epic">
+                    <!-- news block -->
+                    <div class="epic epic--align-left">
+                        <div class="epic__image-container">
+                            <img class="epic__image"
+                                 src="{% static 'pages/img/students.jpg' %}"
+                                 alt="Students">
+                        </div>
+                        <div class="wrapper-inner epic__wrapper">
+                            <div class="epic__text-container">
+                                <div class="epic__text-block">
+                                    <p class="epic__text-quote">"There is a lack of
+                                        solidarity in Europe"</p>
+                                    <p class="epic--compact-text">Conny Rijken in a
+                                        Summer Science Talk about human trafficking
+                                        and refugees</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- blue ribbon -->
+                    <div class="epic epic--compact-text" style="display: none">
+                        <div class="epic__image-container epic__image-container--compact">
+                            <img class="epic__image"
+                                 src="{% static 'pages/img/students.jpg' %}"
+                                 alt="Students">
+                        </div>
+                        <div class="wrapper-inner epic__wrapper">
+                            <div class="epic__text-container">
+                                <div class="epic__text-block">
+                                    <h2 class="epic__text-block-title">Tilburg School of Economics and Management</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="footer__top-container">
+                        <div id="block-footer" class="block-footer"></div>
+                    </div>
+                    <div class="footer__bottom-container">
+                        <div class="wrapper-inner">
+                            <section class="footer-bottom">
+                                <div>
+                                    <div class="footer-bottom__copyright">
+                                        © <span class="currentyear"></span> Tilburg
+                                        University
+                                    </div>
+                                    <div id="block-footerbottomlinks"
+                                         class="footer-bottom__links">
+                                        <a href="https://www.tilburguniversity.edu/disclaimer"
+                                           class="footer-bottom__links-link"
+                                           title="Disclaimer and cookies">
+                                            Disclaimer and cookies
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </footer>
 {% endblock %}

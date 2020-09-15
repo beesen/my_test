@@ -1,0 +1,5 @@
+def callback(tree):
+    """
+    This function is called after every successful CAS authentication.
+    """
+    username = tree[0][0].text

@@ -1,12 +1,124 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <div>Journals ({{ journals.count }}) on {{ vendor }}</div>
-    <div>
-    <table>
-        <tr><th>Name</th></tr>
-        {% for journal in object_list %}
-            <tr><td>{{ journal.name }}</td></tr>
-        {% endfor %}
-    </table>
+    <div class="django-container">
+        <div class="grid">
+            <div class="grid-sizer"></div>
+            {% for journal in object_list %}
+                <div class="grid-item">
+                    <div id="card-journal-{{ journal.id }}" class="card small">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ journal.name }}</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet,
+                                consectetur
+                                adipiscing elit. Sed eu justo ut dui scelerisque
+                                sodales
+                                ac in risus. Morbi venenatis enim nisl, non pharetra
+                                ipsum ultricies scelerisque. Suspendisse viverra sed
+                                libero ac elementum. Ut purus dui, blandit quis
+                                scelerisque ut, tempor id felis.</p>
+                            <div id="div-extra-{{ journal.id }}"
+                                 class="div-extra collapse">
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a class="a-journal collapseButton"
+                               data-toggle="collapse"
+                               href="#div-extra-{{ journal.id }}"
+                               data-id="{{ journal.id }}">More explanation and data
+                                <i class="material-icons"
+                                   style="vertical-align: top">expand_more</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <style>
+            .grid {
+                position: relative;
+            }
+
+            .grid-sizer,
+            .grid-item {
+                height: auto;
+                width: 400px;
+                margin-right: 24px;
+                margin-bottom: 24px;
+            }
+
+            .card.small {
+                border-radius: 5px;
+            }
+
+            .card-footer {
+                background-color: white;
+                text-align: center;
+            }
+
+            .a-journal:hover, .a-journal:focus, .a-journal:active {
+                text-decoration: none;
+            }
+            .spinner-border {
+                height: 24px;
+                width: 24px;
+            }
+        </style>
+        <script>
+            $('.grid').masonry({
+                // set itemSelector so .grid-sizer is not used in layout
+                itemSelector: '.grid-item',
+                // use element for option
+                columnWidth: '.grid-sizer',
+                percentPosition: true
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                // get selector for all journal links
+                const aJournal = $('.a-journal')
+                // if journal is clicked...
+                aJournal.on('click', function () {
+                    // get selector for clicked journal link
+                    const journal_id = $(this).attr("data-id")
+                    // get selector for corresponding card footer
+                    const cardFooter = $(this).parent()
+                    // show spinner in footer
+                    cardFooter.html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>')
+                    // make ajax call
+                    $.ajax({
+                        type: 'post',
+                        url: "{% url 'journals:detail' %}",
+                        async: true,
+                        dataType: 'json',
+                        data: {
+                            'csrfmiddlewaretoken': "{{ csrf_token }}",
+                            journal_id: journal_id
+                        },
+                        // ajax returned successfully
+                        success: function (data) {
+                            // show "less" in footer
+                            cardFooter.html('<a class="a-journal collapseButton" data-toggle="collapse" href="#div-extra-{{ journal.id }}"\n' +
+                                '   data-id="{{ journal.id }}">Less explanation\n' +
+                                '   <i class="material-icons" style="vertical-align: top">expand_less</i>\n' +
+                                '</a>\n')
+                            // get container for data
+                            const divExtra = $('#div-extra-' + journal_id)
+                            // fill container
+                            divExtra.html(data['extra'])
+                            // redraw grid!
+                            $('.grid').masonry()
+                        },
+                        // oops
+                        error: function (data) {
+                            alert('Something went wrong')
+                        }
+                    });
+                })
+            });
+        </script>
     </div>
+{% endblock %}
+{% block navigation %}
+    {% include 'navigation.html' %}
 {% endblock %}

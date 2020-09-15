@@ -1,0 +1,34 @@
+body {
+    background-color: #F2F2F0;
+}
+
+.feather {
+    margin-left: 1em;
+    margin-right: 0.5em;
+    color: #999;
+}
+
+.feather_hover {
+    color: #000;
+}
+
+.footer__bottom-container {
+    padding: 20px 0;
+    padding-bottom: 20px;
+}
+
+.django-container {
+    padding: 1rem;
+}
+
+/* material design */
+.material-icons.md-econtop {
+    font-size: 24px;
+    color: #999;
+    margin-right: 0.5em;
+    vertical-align: text-top;
+}
+
+.md-hoover {
+    color: red;
+}
