@@ -1,0 +1,1 @@
+Ik denk dat alleen dat wat in \templates en \static staat van belang is.
