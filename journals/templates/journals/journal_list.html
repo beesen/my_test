@@ -6,7 +6,7 @@
             <div class="grid-sizer"></div>
             {% for journal in object_list %}
                 <div class="grid-item">
-                    <div id="card-journal-{{ journal.id }}" class="card small">
+                    <div class="card journal-card">
                         <div class="card-body">
                             <h5 class="card-title">{{ journal.name }}</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet,
@@ -21,7 +21,7 @@
                                  class="div-extra collapse">
                             </div>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer journal-card-footer">
                             <a class="a-journal collapseButton"
                                data-toggle="collapse"
                                href="#div-extra-{{ journal.id }}"
@@ -34,36 +34,6 @@
                 </div>
             {% endfor %}
         </div>
-        <style>
-            .grid {
-                position: relative;
-            }
-
-            .grid-sizer,
-            .grid-item {
-                height: auto;
-                width: 400px;
-                margin-right: 24px;
-                margin-bottom: 24px;
-            }
-
-            .card.small {
-                border-radius: 5px;
-            }
-
-            .card-footer {
-                background-color: white;
-                text-align: center;
-            }
-
-            .a-journal:hover, .a-journal:focus, .a-journal:active {
-                text-decoration: none;
-            }
-            .spinner-border {
-                height: 24px;
-                width: 24px;
-            }
-        </style>
         <script>
             $('.grid').masonry({
                 // set itemSelector so .grid-sizer is not used in layout
@@ -107,9 +77,9 @@
                             // fill container
                             divExtra.html(data['extra'])
                             // redraw grid!
+                            // TODO: when using sqlite database this doesnt seem to work
                             $('.grid').masonry()
                         },
-                        // oops
                         error: function (data) {
                             alert('Something went wrong')
                         }

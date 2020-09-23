@@ -20,7 +20,7 @@ DATABASES = {
         'HOST': 'bakphoon.uvt.nl',
         'PORT': '1521',
     },
-    'qdefault': {
+    'test': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }

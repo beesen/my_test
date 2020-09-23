@@ -68,7 +68,7 @@ def get_graph(journal_id):
         #                         xaxis={'title': 'Years'},
         #                         yaxis={'title': 'Indicators', 'dtick': 10},
         height=300,
-        width=350,
+        width=348,
         #                         showlegend=True,
         plot_bgcolor='white',
         margin=dict(l=0, r=0, b=0, t=40)

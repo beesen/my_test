@@ -28,4 +28,6 @@ urlpatterns = [
                   path('journals/', include('journals.urls')),
                   path('webpages/', include('webpages.urls')),
                   path('universities/', include('universities.urls')),
+                  path('organizations/', include('organizations.urls')),
+                  path('tinymce/', include('tinymce.urls')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

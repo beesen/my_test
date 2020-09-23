@@ -29,6 +29,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+
+    {{ form.media }}
 </head>
 <body>
 <!--[if IE]>
@@ -77,6 +79,7 @@
         </section>
         <main class="page-layout__content" role="main" id="main">
             <div class="page-layout__content-inner">
+                {% include 'msg.html' %}
                 {% block content %}
                 {% endblock %}
             </div>
