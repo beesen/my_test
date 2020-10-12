@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import university_view
+from .views import UniversityListView
 
 app_name = 'universities'
-urlpatterns = [path('', university_view, name='list'),
+urlpatterns = [path('', UniversityListView.as_view(), name='list'),
                ]

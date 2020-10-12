@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'webpages',
     'indicators',
     'organizations',
+    'countries',
     'universities',
     'magweg',
 ]

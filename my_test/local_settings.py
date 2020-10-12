@@ -12,7 +12,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 DATABASES = {
-    'default': {
+    '_default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'ORA12PDB_2.uvt.nl',
         'USER': 'BEESEN',
@@ -20,7 +20,7 @@ DATABASES = {
         'HOST': 'bakphoon.uvt.nl',
         'PORT': '1521',
     },
-    'test': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }

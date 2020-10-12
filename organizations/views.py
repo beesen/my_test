@@ -25,7 +25,6 @@ class OrganizationUpdateView(SuccessMessageMixin, generic.UpdateView):
     success_message = "Organization updated..."
 
 
-
 class OrganizationDeleteView(SuccessMessageMixin, generic.DeleteView):
     model = Organization
     success_url = reverse_lazy("organizations:list")
