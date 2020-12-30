@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="django-container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="card">
+                    <h5 class="card-header">
+                        University <span
+                            class="badge badge-secondary">{{ university_list.count }}</span>
+                    </h5>
+                    <div class="card-body">
+                        {% if university_list %}
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th class="w-10 do_not_export">Action</th>
+                                        <th>Name</th>
+                                        <th>Country</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for university in university_list %}
+                                        <tr>
+                                            <td>
+{% comment %}
+                                                <a href='{% url 'organizations:edit' organization.id %}'
+                                                   id="organization-edit_{{ organization.id }}"><i
+                                                        class="material-icons md-fi">edit</i></a>
+                                                <a href='{% url 'organizations:delete' organization.id %}'
+                                                   id="organization-delete_{{ organization.id }}"><i
+                                                        class="material-icons md-fi">delete</i></a>
+{% endcomment %}
+                                            </td>
+                                            <td>{{ university.name }}</td>
+                                            <td>{{ university.country }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <p>No universities found...</p>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+{% comment %}
+                        <a class="btn btn-primary btn-sm"
+                           href='{% url 'universities:create' %}'>New university</a>
+{% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

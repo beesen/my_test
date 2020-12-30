@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-6">
+            <div class="card">
+                <h5 class="card-header">Confirm</h5>
+                <div class="card-body">
+                    <form action='' method='POST'>
+                        {% csrf_token %}
+                        <h6>Do you want to delete the organization "{{ object }}"</h6>
+                        <p><input class="btn btn-sm btn-outline-secondary" type="submit" value="Yes">
+                            <a class="btn btn-sm btn-primary ml-2" href="../..">No</a></p>
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock content %}

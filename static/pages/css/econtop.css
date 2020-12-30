@@ -1,0 +1,77 @@
+.django-container {
+    border-bottom: 1px solid #ddddd8;
+    padding: 2rem;
+}
+
+.grid {
+    position: relative;
+}
+
+.grid-sizer,
+.grid-item {
+    height: auto;
+    width: 400px;
+    margin-right: 24px;
+    margin-bottom: 24px;
+}
+
+.journal-card {
+    width: 400px;
+}
+
+.journal-card-footer {
+    background-color: white;
+    text-align: center;
+}
+
+.a-journal:hover, .a-journal:focus, .a-journal:active {
+    text-decoration: none;
+}
+.spinner-border {
+    height: 24px;
+    width: 24px;
+}
+
+/* university hacks */
+tr:nth-child(2n) {
+    background: #fff !important;
+}
+
+input:not([type]), input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea {
+    max-width: none;
+}
+
+
+/* material design */
+.material-icons.md-econtop {
+    font-size: 24px;
+    color: #999;
+    margin-right: 0.5em;
+    vertical-align: text-top;
+}
+
+/* bootstrap extension */
+.w-10 {
+    width: 10% !important
+}
+.w-20 {
+    width: 20% !important
+}
+.w-30 {
+    width: 30% !important
+}
+.w-40 {
+    width: 40% !important
+}
+.w-60 {
+    width: 60% !important
+}
+.w-70 {
+    width: 70% !important
+}
+.w-80 {
+    width: 80% !important
+}
+.w-90 {
+    width: 90% !important
+}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="django-container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="card">
+                    <h5 class="card-header">
+                        Webpages <span
+                            class="badge badge-secondary">{{ webpage_list.count }}</span>
+                    </h5>
+                    <div class="card-body">
+                        {% if webpage_list %}
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th class="w-10 do_not_export">Action</th>
+                                        <th class="w-30">PageID</th>
+                                        <th>Text</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for webpage in webpage_list %}
+                                        <tr>
+                                            <td>
+                                                <a href='{% url 'webpages:edit' webpage.id %}'
+                                                   id="webpage-edit_{{ program.id }}"><i
+                                                        class="material-icons">edit</i></a>
+                                                {% comment %}
+                                                <a href='{% url 'webpages:delete' webpage.id %}'
+                                                   id="webpage-delete_{{ webpage.id }}"><i
+                                                        class="material-icons">delete</i></a>
+                                                {% endcomment %}
+                                            </td>
+                                            <td>{{ webpage.pageid }}</td>
+                                            <td>{{ webpage.pagetext|striptags|truncatechars:80 }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <p>No webpages found...</p>
+                        {% endif %}
+                    </div>
+                    {% comment %}
+                    <div class="card-footer">
+                        <a class="btn btn-primary btn-sm"
+                           href='{% url 'webpages:create' %}'>New
+                            webpage</a>
+                    </div>
+                    {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
